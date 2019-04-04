@@ -121,7 +121,7 @@ type WVMatrix () =
     let pt = wv.TransformPointV(PointF(single p.X, single p.Y))
     let boundingbox = RectangleF(0.f, 0.f, sz.Width, sz.Height)
     boundingbox.Contains(pt)
-  //riporta l'elemento a forma iniziale
+  //riporta l'elemento a forma iniziale scalando e ruotando
   member this.Change(c : LWCControl) = 
     if(c.Scaled > 0) then 
       for i = 0 to c.Scaled-1 do
@@ -130,7 +130,7 @@ type WVMatrix () =
       for i = 0 to Math.Abs(c.Scaled-1) do
         c.WV.ScaleW(1.1f, 1.1f);
     c.WV.RotateV((single) -c.Rotated, c.WV.TransformPointW(PointF((c.Width / 2.f), (c.Height / 2.f))));
-  //riapplica le modifiche alla forma
+  //riapplica le modifiche alla forma scalando e ruotando
   member this.Restore(c : LWCControl) =
     c.WV.RotateV((single) c.Rotated, c.WV.TransformPointW(PointF((c.Width / 2.f), (c.Height / 2.f))));
     if(c.Scaled > 0) then 
