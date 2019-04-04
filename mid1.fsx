@@ -6,7 +6,7 @@ open System.Drawing.Imaging
 open System.Windows.Forms
 open System.Drawing
 open LWC
-
+//bug con riposizionamento quando impilo dopo zoom out
 type LWCContainer() as this =
   inherit UserControl()
 
