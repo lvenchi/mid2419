@@ -1,7 +1,6 @@
 open System.Collections.Generic
 open System
 open System.Collections
-open System.Drawing.Imaging
 #load "LWC.fsx"
 open System.Windows.Forms
 open System.Drawing
@@ -176,7 +175,7 @@ type LWButton(w, h) as this =
   override this.OnMouseDown( e ) =
     if(not cont.Drawing) then(
       let mutable dialog = new OpenFileDialog()
-      dialog.InitialDirectory <- "C:\\Users\\Lorenzo Venchi\\Desktop\\Mid"
+      dialog.InitialDirectory <- "" //directory dove ci sono le immagini
       dialog.Filter <- "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.gif) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png; *.gif"
       dialog.FilterIndex <- 2;
   
@@ -223,7 +222,7 @@ type Pile(w, h, pilemembers : ResizeArray<LWCControl>, contain : LWCContainer) a
     with get() = cont
     and set( c ) = cont <- c
 
-  //impile images not rotated
+  //impila immagini non ruotate
   member this.Impile() =  
     pilemembers.ForEach(fun c -> 
     (
